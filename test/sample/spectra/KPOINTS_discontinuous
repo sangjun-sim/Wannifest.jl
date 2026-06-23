@@ -1,0 +1,9 @@
+Discontinuous line mode
+3
+Line-mode
+Reciprocal
+0.0 0.0 0.0 ! \Gamma
+0.5 0.0 0.0 ! B_1
+
+0.5 0.5 0.0 ! B
+0.5 0.5 0.5 ! P

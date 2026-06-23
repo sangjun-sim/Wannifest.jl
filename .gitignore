@@ -1,0 +1,30 @@
+# Julia build, coverage, and profiling artifacts
+*.jl.cov
+*.jl.*.cov
+*.jl.mem
+deps/deps.jl
+deps/build.log
+docs/build/
+
+# Generated example outputs
+examples/**/outputs/
+
+# Local environments and secrets
+.env
+.env.*
+!.env.example
+.julia/
+
+# Editor and OS noise
+**/.DS_Store
+.idea/
+.vscode/
+
+# Temporary files
+*.log
+tmp/
+temp/
+docs/
+
+AGENTS.md
+CLAUDE.md

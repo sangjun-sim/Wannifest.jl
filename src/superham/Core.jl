@@ -1,0 +1,26 @@
+module SuperhamCore
+
+include(joinpath(@__DIR__, "..", "shared", "HrFormat.jl"))
+include(joinpath(@__DIR__, "..", "shared", "CrystalCell.jl"))
+include(joinpath(@__DIR__, "..", "shared", "PoscarIO.jl"))
+include(joinpath(@__DIR__, "..", "shared", "Hermiticity.jl"))
+include(joinpath(@__DIR__, "..", "shared", "PairChecks.jl"))
+include(joinpath(@__DIR__, "..", "shared", "WannierTypes.jl"))
+include(joinpath(@__DIR__, "..", "shared", "SpinLayout.jl"))
+include(joinpath(@__DIR__, "..", "shared", "WannierHrIO.jl"))
+include(joinpath(@__DIR__, "..", "shared", "WannierWsvecIO.jl"))
+include(joinpath(@__DIR__, "..", "shared", "WannierWsvecGenerate.jl"))
+include(joinpath(@__DIR__, "..", "shared", "WannierKspace.jl"))
+include(joinpath(@__DIR__, "..", "shared", "WannierEigensystem.jl"))
+include(joinpath(@__DIR__, "..", "shared", "SupercellGeometry.jl"))
+include(joinpath(@__DIR__, "Model.jl"))
+include(joinpath(@__DIR__, "InputIO.jl"))
+include(joinpath(@__DIR__, "HrIO.jl"))
+include(joinpath(@__DIR__, "CenterIO.jl"))
+include(joinpath(@__DIR__, "Kspace.jl"))
+include(joinpath(@__DIR__, "SupercellHam.jl"))
+include(joinpath(@__DIR__, "Validate.jl"))
+include(joinpath(@__DIR__, "WsvecIO.jl"))
+include(joinpath(@__DIR__, "Service.jl"))
+
+end

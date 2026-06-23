@@ -1,0 +1,26 @@
+[contour.run]
+hr = "graphene_hr.dat"
+structure = ""
+wsvec = ""
+hermiticity_tol = 1.0e-8
+verbose = true
+
+[contour.plane]
+axes = ["kx", "ky"]
+fixed_axis = "kz"
+fixed_value = 0.0
+range_x = [-0.5, 0.5]
+range_y = [-0.5, 0.5]
+mesh = "101x101"
+
+[contour.energy]
+shift = 0.0
+bands = [1,2]
+
+[contour.plot]
+mode = "both"
+interactive = true
+size = [900, 700]
+energy_range = [-10.0, 10.0]
+colormap = "viridis"
+contour_levels = 40

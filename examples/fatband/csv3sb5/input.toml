@@ -1,0 +1,49 @@
+[band.run]
+mode = "all"
+hr = "wannier90_hr.dat"
+wsvec = ""
+kpoints = "KPOINTS"
+structure = "wannier90.win"
+
+[band.dos]
+mesh = "90x90x1"
+sigma = 0.05
+npts = 2001
+emin = -10.0
+emax = 10.0
+
+[band.energy]
+shift = 6.7347
+
+[band.plot]
+targets = ["band", "dos", "combined", "fatband", "pdos", "fatband_pdos"]
+size = [740, 480]
+energy_range = [-1, 1]
+font_size = 18
+
+[band.band_plot]
+linewidth = 1.4
+colors = ["#1f77b4"]
+ylabel = "Energy (eV)"
+
+[band.dos_plot]
+linewidth = 2.0
+color = "black"
+xlabel = "Energy (eV)"
+ylabel = "DOS (states/eV)"
+
+[band.combined_plot]
+dos_width_ratio = 0.30
+
+[band.projection]
+enabled = true
+mode = "win_groups"
+win = "wannier90.win"
+plot_style = "empty_circle"
+circle_max_size = 5.0
+circle_stroke_width = 1.0
+groups = [
+  ["V_t2g", ["V"], ["t2g"], "blue"],
+  ["V_eg", ["V"], ["eg"], "red"],
+  ["Sb_p", ["Sb"], ["p"], "green"],
+]

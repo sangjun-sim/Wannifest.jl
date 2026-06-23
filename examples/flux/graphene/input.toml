@@ -1,0 +1,44 @@
+[flux.run]
+hr = "graphene_hr.dat"
+poscar = "POSCAR"
+
+[flux.geometry]
+search_bounds = [1, 1, 0]
+distance_tol = 1.0e-8
+
+[flux.plot]
+interactive = true
+cell_bounds = [2, 2, 0]
+arrow_styles = [
+  ["C1:orb1", 0.4, "#2ca02c"],
+  ["C2:orb1", 0.4, "#d62728"],
+]
+
+[flux.basis]
+orbitals_per_atom = 1
+
+[flux.diagnostic]
+continuity = true
+continuity_tol = 1.0e-10
+plaquettes = [
+  ["C1-triangle", [
+    ["C1", [0, 0, 0]],
+    ["C1", [1, 1, 0]],
+    ["C1", [1, 0, 0]],
+  ]],
+  ["C2-triangle", [
+    ["C2", [0, 0, 0]],
+    ["C2", [1, 0, 0]],
+    ["C2", [1, 1, 0]],
+  ]],
+]
+
+[[flux.terms]]
+term = [
+  [2, ["C1", "C1"], [ 1,  1, 0], [0.0, -0.01]],
+  [2, ["C1", "C1"], [ 1,  0, 0], [0.0, +0.01]],
+  [2, ["C1", "C1"], [ 0,  1, 0], [0.0, +0.01]],
+  [2, ["C2", "C2"], [ 1,  1, 0], [0.0, +0.01]],
+  [2, ["C2", "C2"], [ 1,  0, 0], [0.0, -0.01]],
+  [2, ["C2", "C2"], [ 0,  1, 0], [0.0, -0.01]],
+]

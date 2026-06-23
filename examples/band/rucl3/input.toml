@@ -1,0 +1,36 @@
+[band.run]
+mode = "all"
+hr = "wannier90_hr.dat"
+wsvec = ""
+kpoints = "KPOINTS"
+structure = "wannier90.win"
+
+[band.dos]
+mesh = "90x90x1"
+sigma = 0.05
+npts = 2001
+emin = -10.0
+emax = 10.0
+
+[band.energy]
+shift = 0.0
+
+[band.plot]
+targets = ["band", "dos", "combined"]
+size = [740, 480]
+energy_range = [-4.75, -3.5]
+font_size = 18
+
+[band.band_plot]
+linewidth = 1.4
+colors = ["#1f77b4"]
+ylabel = "Energy (eV)"
+
+[band.dos_plot]
+linewidth = 2.0
+color = "black"
+xlabel = "Energy (eV)"
+ylabel = "DOS (states/eV)"
+
+[band.combined_plot]
+dos_width_ratio = 0.30

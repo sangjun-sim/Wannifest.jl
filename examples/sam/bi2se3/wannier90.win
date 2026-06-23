@@ -1,0 +1,38 @@
+num_wann = 30
+num_bands = 60
+
+dis_num_iter=1000
+num_iter=0
+iprint=2
+
+!min of outer window
+dis_win_min = -2.0
+dis_win_max = 18.0
+
+!inner -
+dis_froz_min = -2.0000
+dis_froz_max = 5.5000
+hr_plot =.true.
+
+
+begin projections
+Bi : p
+Se : p
+end projections
+
+spinors = .true.
+
+begin unit_cell_cart
+-2.069  -3.583614  0.000000
+ 2.069  -3.583614  0.000000
+ 0.000   2.389075  9.546667
+end unit_cell_cart
+
+begin atoms_cart
+Bi  0.00000000000000  -1.19453869700000   6.65402689900000
+Bi  0.00000000000000  -3.58361430300000   2.89264010100000
+Se  0.00000000000000   1.19453750000000   4.77333350000000
+Se  0.00000000000000  -1.19453811800000   1.12650670600000
+Se  0.00000000000000  -3.58361488200000   8.42016029400000
+end atoms_cart
+
