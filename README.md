@@ -5,15 +5,6 @@
 Wannifest.jl is a Julia package for Wannier tight-binding models. It works with Wannier90 Hamiltonians, POSCAR/CONTCAR structure inputs, Quantum ESPRESSO data, and TOML input files through a single command-line entry point.
 
 
-| Command | Purpose |
-| --- | --- |
-| `band` | Band structures, DOS, projections, orbital and spin angular momentum |
-| `contour` | Two-dimensional k-plane energy maps and contour/surface plots |
-| `flux` | Directed complex flux terms, visualization, and diagnostics |
-| `superham` | Supercell Hamiltonians from primitive-cell Wannier models |
-| `soc` | SP/SOC Bloch overlaps and transformations between Wannier bases |
-
-
 ## Installation
 
 Install Julia and make sure `julia` is on your `PATH`. The shell launcher also requires bash and `readlink -f`. From the repository root, install the dependencies listed in `Project.toml` and link the launcher:
@@ -53,47 +44,6 @@ wannifest examples/contour/graphene/input.toml
 
 Command-line input paths are relative to the current working directory. Paths inside TOML inputs are generally relative to the input file; output locations are controlled by the command's input settings and command-line options.
 
-## Regenerating the Fe SOC example
-
-The large QE output directories are excluded from Git. The example retains
-`scf.in`, `nscf.in`, the pw2wannier90 inputs, and the three Wannier90 `.win` files.
-QE and Wannier90 are needed to regenerate the data; they are not needed for the
-automated tests. The QE inputs use `pseudo_dir = './pseudo'`. Place the
-scalar-relativistic ONCV `Fe.upf` in `sp/pseudo/` and the fully relativistic ONCV
-`Fe.upf` in `soc/pseudo/`; these pseudopotentials are not included.
-
-Run these commands in `examples/soc/fe/sp/`:
-
-```bash
-pw.x < scf.in > scf.out
-pw.x < nscf.in > nscf.out
-wannier90.x -pp fe_up
-wannier90.x -pp fe_dn
-pw2wannier90.x < pw2wan_up.in > pw2wan_up.out
-pw2wannier90.x < pw2wan_dn.in > pw2wan_dn.out
-wannier90.x fe_up
-wannier90.x fe_dn
-```
-
-Then run these commands in `examples/soc/fe/soc/`:
-
-```bash
-pw.x < scf.in > scf.out
-pw.x < nscf.in > nscf.out
-wannier90.x -pp fe
-pw2wannier90.x < pw2wan.in > pw2wan.out
-wannier90.x fe
-```
-
-Keep the non-HDF5 wavefunction files and `data-file-schema.xml` in each channel's
-`outputs/fe.save/`, as configured in `input.toml`. Recreate all three Wannier90
-channels after rerunning QE: the supplied `.eig`, `_u.mat`, and `_u_dis.mat`
-files must correspond to the same NSCF wavefunctions. An SCF input alone does
-not replace those outputs. From the repository root, run:
-
-```bash
-wannifest examples/soc/fe/input.toml
-```
 
 ## Tests
 
