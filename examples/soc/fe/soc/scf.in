@@ -1,0 +1,36 @@
+&CONTROL
+  calculation = 'scf',
+  prefix = 'fe',
+  outdir = './outputs',
+  pseudo_dir = './pseudo',
+/
+&SYSTEM
+  ibrav = 0,
+  nat = 1,
+  ntyp = 1,
+  ecutwfc = 160,
+  ecutrho = 640,
+  noncolin = .true.,
+  lspinorb = .true.,
+  starting_magnetization(1) = 3,
+  angle1(1) = 0.0,
+  angle2(1) = 0.0,
+  occupations = 'smearing',
+  smearing = 'cold',
+  degauss = 0.02,
+/
+&ELECTRONS
+  conv_thr = 1e-10,
+  electron_maxstep = 200,
+  mixing_beta = 0.3,
+/
+ATOMIC_SPECIES
+Fe 55.845 Fe.upf
+ATOMIC_POSITIONS crystal
+Fe 0 0 0
+K_POINTS automatic
+15 15 15 0 0 0
+CELL_PARAMETERS angstrom
+-1.415 1.415 1.415
+1.415 -1.415 1.415
+1.415 1.415 -1.415

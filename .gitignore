@@ -1,0 +1,34 @@
+# Julia build, coverage, and profiling artifacts
+*.jl.cov
+*.jl.*.cov
+*.jl.mem
+deps/deps.jl
+deps/build.log
+
+# Generated example outputs
+examples/**/outputs/
+examples/**/soc_out/
+examples/**/qe/
+
+# Local environments and secrets
+.env
+.env.*
+!.env.example
+.julia/
+
+# Editor and OS noise
+**/.DS_Store
+.vscode/
+.ipynb_checkpoints/
+.cache/
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.py[cod]
+
+# Temporary files
+*.log
+tmp/
+temp/
+docs/

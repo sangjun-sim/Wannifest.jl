@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Resolve the installed symlink without changing the caller's working directory.
+script_path="$(readlink -f -- "${BASH_SOURCE[0]}")"
+project_dir="$(dirname -- "$(dirname -- "$script_path")")"
+
+exec julia "$project_dir/main.jl" "$@"

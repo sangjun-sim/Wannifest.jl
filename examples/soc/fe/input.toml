@@ -1,0 +1,47 @@
+# SP/SOC Bloch overlap V(k) and Wannier-basis transformation T(k), T(R).
+#
+# bcc Fe, Quantum ESPRESSO (ONCV, 10x10x10 nscf, nosym/noinv) + Wannier90 v3.
+# sp/ holds the spin-polarized data (Wannier90
+# up and down runs: .win, .eig, _u.mat, _u_dis.mat, _hr.dat; the QE nscf input
+# scf.in, nscf.in, and pw2wan inputs); soc/ holds the same for the spinor run.
+# QE outputs are not distributed. Regenerate SCF, NSCF, and all Wannier90
+# channels before running this example; see the root README.md.
+# Relative paths are resolved against the directory of this file.
+#
+#   julia main.jl soc --input examples/soc/fe/input.toml [--no-vmat] [--output-dir dir]
+#
+# Requirements:
+#   - norm-conserving (ONCV) pseudopotentials, non-HDF5 wfc*.dat files
+#   - nosym = .true. and noinv = .true. in both nscf inputs
+#   - write_u_matrices = .true. in all three .win files (and write_hr = .true. for write_soc)
+#   - the same projections (order and local axes) in all three .win files
+#   - SOC magnetization along z
+#   - the very nscf outdir that pw2wannier90 read for each Wannier90 run
+
+[soc.qe]
+sp_outdir  = "sp/outputs"         # nscf outdir; holds <sp_prefix>.save with wfcup*.dat / wfcdw*.dat
+sp_prefix  = "fe"
+sp_input   = "sp/nscf.in"           # checked for nosym / noinv
+soc_outdir = "soc/outputs"        # nscf outdir; holds <soc_prefix>.save with wfc*.dat
+soc_prefix = "fe"
+soc_input  = "soc/nscf.in"          # also checked for angle1 / angle2
+
+[soc.wannier]
+dir_up    = "sp"                    # <seed>.win, <seed>.eig, <seed>_u.mat, <seed>_u_dis.mat, <seed>_hr.dat
+seed_up   = "fe_up"
+dir_down  = "sp"
+seed_down = "fe_dn"
+dir_soc   = "soc"
+seed_soc  = "fe"
+
+[soc.run]
+atol = 1e-8               # Cartesian k comparison (bohr^-1)
+degeneracy_tol = 1e-4     # outer-window edge degeneracy warning (eV)
+window_tol = 1e-3         # SP/SOC window comparison (eV)
+eig_tol = 1e-5            # .eig vs QE XML eigenvalue cross-check (eV)
+write_vmat = true         # V(k) can be large: 16 * nk * nb_sp * nb_soc bytes
+write_soc = true          # h_soc_delta_hr.dat = H_soc(R) - T(0)^dagger H_sp(R) T(0); needs write_hr = .true. in all three runs
+tmat_R = [[0, 0, 0]]      # R = R' term only; "hr" takes the R list of <seed_up>_hr.dat
+
+[soc.output]
+dir = "soc_out"

@@ -1,0 +1,40 @@
+[band.run]
+mode = "bands"
+hr = "wannier90_hr.dat"
+wsvec = ""
+kpoints = "KPOINTS"
+structure = "wannier90.win"
+
+[band.energy]
+shift = 4.4195
+
+[band.plot]
+targets = ["band", "sam"]
+size = [720, 560]
+energy_range = [-1.0, 1.0]
+font_size = 18
+
+[band.spin]
+layout = "vasp544"
+
+[band.band_plot]
+linewidth = 1.3
+colors = ["#1f77b4"]
+ylabel = "Energy (eV)"
+
+[band.projection]
+enabled = true
+mode = "win_groups"
+win = "wannier90.win"
+plot_style = "empty_circle"
+circle_max_size = 5.0
+circle_stroke_width = 1.0
+groups = [
+  ["Bi_p", ["Bi"], ["p"], "#d62728"],
+  ["Se_p", ["Se"], ["p"], "#1f77b4"],
+]
+
+[band.sam]
+enabled = true
+degeneracy_tol = 1.0e-4
+plot_components = ["Sx", "Sy", "Sz"]

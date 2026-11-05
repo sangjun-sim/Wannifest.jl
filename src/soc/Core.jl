@@ -1,0 +1,32 @@
+module SocCore
+
+include(joinpath(@__DIR__, "..", "shared", "geometry", "CrystalCell.jl"))
+include(joinpath(@__DIR__, "..", "shared", "validation", "Hermiticity.jl"))
+include(joinpath(@__DIR__, "..", "shared", "validation", "PairChecks.jl"))
+include(joinpath(@__DIR__, "..", "shared", "wannier", "WannierTypes.jl"))
+include(joinpath(@__DIR__, "..", "shared", "basis", "SpinLayout.jl"))
+include(joinpath(@__DIR__, "..", "shared", "io", "WannierHrIO.jl"))
+include(joinpath(@__DIR__, "..", "shared", "io", "HrFormat.jl"))
+include(joinpath(@__DIR__, "..", "shared", "utils", "InputParsing.jl"))
+include(joinpath(@__DIR__, "..", "shared", "basis", "Win90Keywords.jl"))
+include(joinpath(@__DIR__, "..", "shared", "basis", "Win90OrbitalTokens.jl"))
+include(joinpath(@__DIR__, "..", "shared", "basis", "Win90ProjectionIO.jl"))
+include(joinpath(@__DIR__, "..", "shared", "io", "WannierUmatIO.jl"))
+include(joinpath(@__DIR__, "..", "shared", "io", "WannierEigIO.jl"))
+include(joinpath(@__DIR__, "..", "shared", "io", "QeXmlSchema.jl"))
+
+include(joinpath(@__DIR__, "Model.jl"))
+include(joinpath(@__DIR__, "InputIO.jl"))
+include(joinpath(@__DIR__, "Validate.jl"))
+include(joinpath(@__DIR__, "QeWfcIO.jl"))
+include(joinpath(@__DIR__, "QeInputCheck.jl"))
+include(joinpath(@__DIR__, "KpointMatch.jl"))
+include(joinpath(@__DIR__, "BandWindow.jl"))
+include(joinpath(@__DIR__, "Channel.jl"))
+include(joinpath(@__DIR__, "Vmat.jl"))
+include(joinpath(@__DIR__, "Tmat.jl"))
+include(joinpath(@__DIR__, "BinaryIO.jl"))
+include(joinpath(@__DIR__, "SOC.jl"))
+include(joinpath(@__DIR__, "Service.jl"))
+
+end

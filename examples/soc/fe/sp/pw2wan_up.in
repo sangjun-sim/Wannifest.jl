@@ -1,0 +1,9 @@
+&inputpp
+  outdir = './outputs',
+  prefix = 'fe',
+  seedname = 'fe_up',
+  spin_component = 'up',
+  write_amn = .true.,
+  write_mmn = .true.,
+  write_unk = .false.,
+/
